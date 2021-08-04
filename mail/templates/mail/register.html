@@ -1,0 +1,37 @@
+{% extends "mail/layout.html" %}
+
+{% block body %}
+
+    <div class="container shadow p-4" id="login-view">
+        <div class="row justify-content-center">
+            <h3 style="width: auto;" id="login-title">Register</h3>
+        </div>
+        <hr>
+
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-floating mt-5 mb-3">
+                <input required autofocus class="form-control" id="floatingInput" type="email" name="email" placeholder="Email">
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input required class="form-control" id="floatingInput" type="password" name="password" placeholder="Password">
+                <label for="floatingInput">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="floatingInput" type="password" name="confirmation" placeholder="Confirm Password">
+                <label for="floatingInput">Confirm Password</label>
+            </div>
+
+            {% if message %}
+                <div style="color: brown;">{{ message }}</div>
+            {% endif %}
+            
+            <div class="row mt-5">
+                <div class="col"><a class="btn bg-transparent ps-0 pe-0" href="{% url 'login' %}" style="color: #1858ee;">Log In</a></div>
+                <div class="col-auto"><input class="btn btn-primary" type="submit" value="Register"></div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

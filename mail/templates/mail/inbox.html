@@ -1,0 +1,70 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <div class="row m-3">
+        <div class="col-auto">
+            <h2>
+                <span class="material-icons" id="mail-icon">email</span>
+                Mail
+            </h2>
+            <div class="nav flex-column nav-pills mt-4" style="width: fit-content;">
+                <button class="nav-link" data-bs-toggle="pill" id="compose">Compose</button>
+                <button class="nav-link active" data-bs-toggle="pill" id="inbox">Inbox</button>
+                <button class="nav-link" data-bs-toggle="pill" id="sent">Sent</button>
+                <button class="nav-link" data-bs-toggle="pill" id="archived">Archived</button>
+            </div>
+        </div>
+        <div class="col">
+            <h5 style="text-align: end;">
+                {{ request.user.email }}
+                <a class="btn btn-sm btn-outline-dark ms-3" href="{% url 'logout' %}">Log Out</a>
+            </h5>
+
+            <div class="p-3 mb-5 mt-3" id="emails-view">
+                <div class="col" id="mailbox-title"></div>
+                <hr>
+                <div id="emails-list"></div>
+            </div>
+
+            <div class="p-3 mb-5 mt-3" id="mail-view">
+                <div class="row">
+                    <div class="col" id="mailbox-subject"></div>
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-end" id="toolbar-buttons"></div>
+                </div>
+                <hr>
+                <div class="row" id="mailbox-info"></div>
+                <hr>
+                <div id="mailbox-body"></div>
+            </div>
+
+            <div class="p-3 mb-5 mt-3" id="compose-view">
+                <form id="compose-form">
+                    <div class="row justify-content-between" id="mailbox-title">
+                        <div class="col"><h4 style="display: inline-block;">New Mail</h4></div>
+                        <div class="col-auto"><input type="submit" class="btn btn-primary" value="Compose"/></div>
+                    </div>
+                    <hr>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">From</span>
+                        <input disabled class="form-control" value="{{ request.user.email }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">To</span>
+                        <input type="text" class="form-control" id="compose-recipients">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input style="font-weight: 500;" class="form-control" id="compose-subject" placeholder="Subject">
+                    </div>
+                    <textarea class="form-control mb-3" id="compose-body" placeholder="Body"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}

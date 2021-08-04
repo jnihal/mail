@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+#compose-body {
+    min-height: 300px;
+}
+
+#mail-icon {
+    vertical-align: bottom;
+    font-size: 36px;
+    color: rgb(44, 44, 44);
+}
+
+.nav-link:hover {
+    background-color: rgba(231, 231, 231, 0.3);
+}
+
+.active {
+    background-color: rgba(83, 83, 83, 0.8) !important;
+}
+
+#mailbox-title, #login-title, #mailbox-subject {
+    color: rgb(95, 95, 95);
+}
+
+#compose-view, #emails-view, #login-view, #mail-view {
+    background-color: #f6f8fa7c;
+    border-radius: 15px;
+}
+
+#login-view {
+    justify-content: center;
+    margin-top: 100px;
+    width: 450px;
+}
+
+#mail-list-item {
+    cursor: pointer;
+}
+
+#mail-list-item:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.3);
+}
+
+#mailbox-info {
+    color: gray;
+    font-weight: 500;
+}
